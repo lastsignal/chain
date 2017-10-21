@@ -1,6 +1,6 @@
 ﻿namespace Chain
 {
-    public interface ILink<in T> where T : ILinkParameter
+    public interface ILink<in T>
     {
         void Execute(T parameter);
 

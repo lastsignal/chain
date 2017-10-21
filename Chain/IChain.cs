@@ -2,9 +2,9 @@
 
 namespace Chain
 {
-    public interface IChain<T> where T : ILinkParameter
+    public interface IChain<T>
     {
-        void AddLink<TClass>() where TClass : ILink<T>, new();
+        void AddLink<TLink>() where TLink : ILink<T>, new();
         void ExecuteAll(T message);
 
         void SetClosingAction(Action<T> endLinkAction);

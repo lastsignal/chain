@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chain
 {
-    public class EmptyChain<T> : IChain<T> where T : ILinkParameter
+    public class EmptyChain<T> : IChain<T>
     {
         private readonly List<ILink<T>> _chain;
         private Action<T> _endLinkAction;

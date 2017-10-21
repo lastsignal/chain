@@ -2,7 +2,7 @@
 
 namespace UnitTests.SupportingItems
 {
-    public class Message : ILinkParameter
+    public class Message
     {
         public string Name { get; set; }
     }
