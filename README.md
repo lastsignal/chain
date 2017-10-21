@@ -26,6 +26,21 @@ c.AddLink<L2>();
 c.ExecuteAll(message);
 ```
 
+`EmptyChain` can also be used in a different way:
+``` csharp
+public class L1L2Chain : EmptyChain<Message>
+{
+    public L1L2Chain()
+    {
+        AddLink<L1>();
+        AddLink<L2>();
+    }
+}
+
+var c = new L1L2Chain();
+c.ExecuteAll(message);
+```
+
 Chains can also be created in IoC registration. This gives the flexibility to define the sequence of the chain in the IoC. 
 ``` csharp
 _container = new Container(_ => _.For<IChain<Message>>().Use(CreateChain()).Singleton());
