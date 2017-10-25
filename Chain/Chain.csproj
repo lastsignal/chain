@@ -40,10 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmptyChain.cs" />
+    <Compile Include="PlainChain.cs" />
     <Compile Include="IChain.cs" />
     <Compile Include="ILink.cs" />
-    <Compile Include="ILinkParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

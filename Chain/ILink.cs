@@ -2,7 +2,7 @@
 {
     public interface ILink<in T>
     {
-        void Execute(T parameter);
+        void Execute(T message);
 
         bool ShouldStopPropagation();
 

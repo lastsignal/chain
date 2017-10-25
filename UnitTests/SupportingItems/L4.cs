@@ -4,9 +4,9 @@ namespace UnitTests.SupportingItems
 {
     public class L4 : ILink<Message>
     {
-        public void Execute(Message parameter)
+        public void Execute(Message message)
         {
-            Results.Add($"L4: {parameter.Name}");
+            Results.Add($"L4: {message.Name}");
         }
 
         public bool ShouldStopPropagation()

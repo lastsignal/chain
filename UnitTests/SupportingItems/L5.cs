@@ -1,12 +1,10 @@
-﻿using Chain;
-
-namespace UnitTests.SupportingItems
+﻿namespace UnitTests.SupportingItems
 {
-    public class L1 : ILink<Message>
+    public class L5 : ILinkMarker
     {
         public void Execute(Message message)
         {
-            Results.Add($"L1: {message.Name}");
+            Results.Add($"L5: {message.Name}");
         }
 
         public bool ShouldStopPropagation()

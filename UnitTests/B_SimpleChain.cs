@@ -19,9 +19,10 @@ namespace UnitTests
         {
             var message = new Message { Name = "M1" };
 
-            var c = new EmptyChain<Message>();
-
-            c.AddLink<L1>();
+            var c = new PlainChain<Message>(new ILink<Message>[]
+            {
+                new L1(),
+            });
 
             c.ExecuteAll(message);
 
@@ -35,10 +36,11 @@ namespace UnitTests
         {
             var message = new Message { Name = "M1" };
 
-            var c = new EmptyChain<Message>();
-
-            c.AddLink<L1>();
-            c.AddLink<L2>();
+            var c = new PlainChain<Message>(new ILink<Message>[]
+            {
+                new L1(),
+                new L2(),
+            });
 
             c.ExecuteAll(message);
 

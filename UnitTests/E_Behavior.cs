@@ -19,10 +19,11 @@ namespace UnitTests
         {
             var message = new Message { Name = "M1" };
 
-            var c = new EmptyChain<Message>();
-
-            c.AddLink<L3>();
-            c.AddLink<L1>();
+            var c = new PlainChain<Message>(new ILink<Message>[]
+            {
+                new L3(),
+                new L1(),
+            });
 
             c.ExecuteAll(message);
 
@@ -36,14 +37,16 @@ namespace UnitTests
         {
             var message = new Message { Name = "M1" };
 
-            var c = new EmptyChain<Message>();
+            var c = new PlainChain<Message>(new ILink<Message>[]
+            {
+                new L3(),
+                new L1(),
+            });
+
             c.SetClosingAction(m =>
             {
                 Results.Add("ClosingMessage");
             });
-
-            c.AddLink<L3>();
-            c.AddLink<L1>();
 
             c.ExecuteAll(message);
 
@@ -58,14 +61,16 @@ namespace UnitTests
         {
             var message = new Message { Name = "M1" };
 
-            var c = new EmptyChain<Message>();
+            var c = new PlainChain<Message>(new ILink<Message>[]
+            {
+                new L4(),
+                new L1(),
+            });
+
             c.SetClosingAction(m =>
             {
                 Results.Add("ClosingMessage");
             });
-
-            c.AddLink<L4>();
-            c.AddLink<L1>();
 
             c.ExecuteAll(message);
 

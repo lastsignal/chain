@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Chain
 {
-    public class EmptyChain<T> : IChain<T>
+    public class PlainChain<T> : IChain<T>
     {
-        private readonly List<ILink<T>> _chain;
+        private readonly ILink<T>[] _chain;
+
         private Action<T> _endLinkAction;
-
-        public EmptyChain()
-        {
-            _chain = new List<ILink<T>>();
-        }
-
-        public void AddLink<TLink>() where TLink : ILink<T>, new()
-        {
-            var link = new TLink();
-            _chain.Add(link);
-        }
 
         public void ExecuteAll(T message)
         {
@@ -38,6 +27,11 @@ namespace Chain
         public void SetClosingAction(Action<T> endLinkAction)
         {
             _endLinkAction = endLinkAction;
+        }
+
+        public PlainChain(ILink<T>[] chain)
+        {
+            _chain = chain;
         }
     }
 }

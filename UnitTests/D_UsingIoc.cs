@@ -17,17 +17,18 @@ namespace UnitTests
             Results.Reset();
 
             _container = new Container(_ =>
-                _.For<IChain<Message>>()
-                    .Use(CreateChain()).Singleton()
-            );
-        }
+                {
+                    _.Scan(s =>
+                    {
+                        s.TheCallingAssembly();
+                        s.AddAllTypesOf<ILinkMarker>();
+                    });
 
-        private static IChain<Message> CreateChain()
-        {
-            var x = new EmptyChain<Message>();
-            x.AddLink<L1>();
-            x.AddLink<L2>();
-            return x;
+                    _.For<IChain<Message>>()
+                        .Use<L5L6Chain>()
+                        .Singleton();
+                }
+            );
         }
 
         [Test]
@@ -41,8 +42,8 @@ namespace UnitTests
 
             Results.Count.ShouldEqual(2);
 
-            Results.Index[0].ShouldEqual("L1: M1");
-            Results.Index[1].ShouldEqual("L2: M1");
+            Results.Index[0].ShouldEqual("L5: M1");
+            Results.Index[1].ShouldEqual("L6: M1");
         }
     }
 }

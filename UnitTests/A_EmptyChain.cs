@@ -17,7 +17,7 @@ namespace UnitTests
         [Test]
         public void Executing_an_empty_chain_should_not_throw_exception()
         {
-            var emptyChain = new EmptyChain<Message>();
+            var emptyChain = new PlainChain<Message>(new ILink<Message>[0]);
 
             var message = new Message();
 
@@ -27,9 +27,9 @@ namespace UnitTests
         [Test]
         public void Executing_am_empty_chain_should_not_result_anything()
         {
-            var emptyChain = new EmptyChain<Message>();
+            var emptyChain = new PlainChain<Message>(new ILink<Message>[0]);
 
-            var message = new Message ();
+            var message = new Message();
 
             emptyChain.ExecuteAll(message);
 
@@ -39,7 +39,7 @@ namespace UnitTests
         [Test]
         public void Executing_an_emtpy_chain_should_run_closing_action()
         {
-            var emptyChain = new EmptyChain<Message>();
+            var emptyChain = new PlainChain<Message>(new ILink<Message>[0]);
 
             emptyChain.SetClosingAction(m =>
             {
